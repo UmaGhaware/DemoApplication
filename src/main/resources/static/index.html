@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function findCities() {
+            var textbx = document.getElementById("cityname");
+            var val = textbx.value;
+            const xhttp = new XMLHttpRequest();
+            xhttp.onload = function() {
+                document.getElementById("list").innerHTML = this.responseText;
+            }
+            xhttp.open("GET", "http://localhost:8080/city/find?letter="+val);
+            xhttp.send();
+        }
+    </script>
+
+</head>
+<body>
+  <div>
+      <span>Enter</span>
+      <input type="text" id="cityname"/>
+      <input type="button" value="Find" onclick="findCities()"/>
+      <div>
+          Cities:
+          <div id="list">
+
+          </div>
+      </div>
+  </div>
+</body>
+</html>
